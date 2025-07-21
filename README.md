@@ -6,3 +6,5 @@ Morningstar provides various financial data on public companies. For example if 
 Often this information is used for comparing many different publicly traded companies.
 
 The programs in this repository can be used to convert the various xls files exported by Morningstar into Pandas DataFrames. These DataFrames can then be easily combined and used for financial analysis projects.
+
+**Note: When exporting the data from Morningstar each file has and underscore and the ticker added. For example using the company above "_AAPL" would be added to end of each morningstar eport file. This helps for file management and is expected in the way the code is written.** 

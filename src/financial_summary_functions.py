@@ -1,18 +1,20 @@
-# Function for process Morningstar export file of: 
-# Key Metrics > Financial Health
+"""
+Function for processing Morningstar export of: 
+Key Metrics > Financial Health
+"""
 
 import numpy as np
 import pandas as pd
 
 def process_income_statement_from_summary_export(file_path):
     """
-    Extract and process the Income Statement from a Morningstar Key Metrics \n
+    Extract and process the Income Statement from a Morningstar Key Metrics
     Financial Summary export.
 
-    This involves separating the Income Statement data, removing unneeded \n
-    columns, renaming and modifying indexes, transposing the data table, \n
-    changing data types from strings to numbers, modifying % columns from \n
-    whole numbers to decimals and returning a DataFrames. 
+    This involves separating the Income Statement data, removing unneeded
+    columns, renaming and modifying indexes, transposing the data table,
+    changing data types from strings to numbers, modifying % columns from
+    whole numbers to decimals and returning a DataFrame. 
 
     Parameters:
         file_path (str): The path to the file including the file name.
@@ -87,7 +89,7 @@ def process_balance_sheet_from_summary_export(file_path):
     This involves separating the Balance Sheet data, removing unneeded \n
     columns, renaming and modifying indexes, transposing the data table, \n
     changing data types from strings to numbers, modifying % columns from \n
-    whole numbers to decimals and returning a DataFrames. 
+    whole numbers to decimals and returning a DataFrame. 
 
     Parameters:
         file_path (str): The path to the file including the file name.
@@ -146,7 +148,7 @@ def process_cash_flow_statement_from_summary_export(file_path):
     This involves separating the Cash Flow Statement data, removing \n
     unneeded columns, renaming and modifying indexes, transposing the data \n
     table, changing data types from strings to numbers, modifying % columns \n
-    from whole numbers to decimals and returning a DataFrames. 
+    from whole numbers to decimals and returning a DataFrame. 
 
     Parameters:
         file_path (str): The path to the file including the file name.

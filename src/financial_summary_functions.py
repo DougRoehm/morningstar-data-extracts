@@ -27,7 +27,7 @@ def process_income_statement_from_summary_export(file_path):
     """
     
     # File information
-    file_name = file_path.split("/")[-1]
+    file_name = str(file_path).split("/")[-1]
     company_ticker = file_name.split("_")[-1].replace(".xls", "")
 
     # Convert to Pandas DataFrame
@@ -102,7 +102,7 @@ def process_balance_sheet_from_summary_export(file_path):
     """
     
     # File information
-    file_name = file_path.split("/")[-1]
+    file_name = str(file_path).split("/")[-1]
     company_ticker = file_name.split("_")[-1].replace(".xls", "")
     
     # Convert to Pandas DataFrame
@@ -161,7 +161,7 @@ def process_cash_flow_statement_from_summary_export(file_path):
     """
     
     # File information
-    file_name = file_path.split("/")[-1]
+    file_name = str(file_path).split("/")[-1]
     company_ticker = file_name.split("_")[-1].replace(".xls", "")
     
     # Convert to Pandas DataFrame

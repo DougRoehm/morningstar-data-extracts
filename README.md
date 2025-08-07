@@ -14,6 +14,4 @@ The program expects a path to a folder containing the files to be processed. Eac
 
 See the demonstration folder for an example of various telecommunications guideline companies being combined for each of the above export files.
 
-**Note: When exporting the data from Morningstar each file has manually had an underscore and ticker added. For example using the company above "_AAPL" would be added to end of each morningstar export file. This helps for file management and is expected in the way the code is written.**
-
-This could be changed at some point, because when Morningstar exports the XML file it names the tab using the company ticker. The worksheet tab could be used to extract the ticker instead of expecting it be at the end of each file.
+**Note: When exporting the data from Morningstar each file has manually had an underscore and ticker added.** For example using the company above "_AAPL" would be added to the end of each morningstar export file. This helps for file management and **is currently expected in the way the code is written.** This could be changed at some point however, because when Morningstar exports the xls file it names the tab using the company ticker. The worksheet tab could be used to extract the ticker instead of expecting it be at the end of each file.

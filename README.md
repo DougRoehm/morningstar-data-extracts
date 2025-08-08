@@ -9,6 +9,7 @@ The programs in this repository can be used to convert the xls file exports from
 - Key Metrics > Financial Summary
 - Key Metrics > Profitability and Efficiency
 - Key Metrics > Financial Health
+- Key Metrics > Cash Flow Ratios
 
 The program expects a path to a folder containing the files to be processed. Each type of export will need to be in a separate folder. The program will then take all the files in the folder, convert them to Pandas DataFrames, make various modification, combine them into one DataFrame and save the file as a csv file in the output folder.
 

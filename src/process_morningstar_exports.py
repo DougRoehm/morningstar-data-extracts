@@ -54,7 +54,7 @@ def main():
         # Save DataFrame as csv file in output folder
         output_file_name_is = f"gpc-summary-income-statement-{industry_description}.csv"
         output_file_path_is = output_folder / output_file_name_is
-        df_income_statement.to_csv(output_file_path_is)
+        df_income_statement.sort_index().to_csv(output_file_path_is)
 
         # Process Balance Sheet using function and save to DataFrame
         df_balance_sheet = pd.DataFrame()

@@ -28,9 +28,13 @@ def process_income_statement_from_summary_export(file_path):
 
     """
     
+    # Get company ticker from xls worksheet name
+    with pd.ExcelFile(file_path) as xls:
+        sheet_names = xls.sheet_names
+        company_ticker = sheet_names[0]
+    
     # File information
     file_name = str(file_path).split("/")[-1]
-    company_ticker = file_name.split("_")[-1].replace(".xls", "")
 
     # Convert to Pandas DataFrame
     df_is = pd.read_excel(file_path, index_col=0)
@@ -102,9 +106,13 @@ def process_balance_sheet_from_summary_export(file_path):
 
     """
     
+    # Get company ticker from xls worksheet name
+    with pd.ExcelFile(file_path) as xls:
+        sheet_names = xls.sheet_names
+        company_ticker = sheet_names[0]
+    
     # File information
     file_name = str(file_path).split("/")[-1]
-    company_ticker = file_name.split("_")[-1].replace(".xls", "")
     
     # Convert to Pandas DataFrame
     df_bs = pd.read_excel(file_path, index_col=0)
@@ -160,9 +168,13 @@ def process_cash_flow_statement_from_summary_export(file_path):
 
     """
     
+    # Get company ticker from xls worksheet name
+    with pd.ExcelFile(file_path) as xls:
+        sheet_names = xls.sheet_names
+        company_ticker = sheet_names[0]
+    
     # File information
     file_name = str(file_path).split("/")[-1]
-    company_ticker = file_name.split("_")[-1].replace(".xls", "")
     
     # Convert to Pandas DataFrame
     df_cf = pd.read_excel(file_path, index_col=0)
@@ -221,10 +233,14 @@ def process_profitability_and_efficiency_export(file_path):
 
     """
     
+    # Get company ticker from xls worksheet name
+    with pd.ExcelFile(file_path) as xls:
+        sheet_names = xls.sheet_names
+        company_ticker = sheet_names[0]
+    
     # File information
     file_name = str(file_path).split("/")[-1]
-    company_ticker = file_name.split("_")[-1].replace(".xls", "")
-
+    
     # Convert to Pandas DataFrame
     df = pd.read_excel(file_path, index_col=0) 
 
@@ -287,10 +303,14 @@ def process_financial_health_export(file_path):
 
     """
     
+    # Get company ticker from xls worksheet name
+    with pd.ExcelFile(file_path) as xls:
+        sheet_names = xls.sheet_names
+        company_ticker = sheet_names[0]
+    
     # File information
     file_name = str(file_path).split("/")[-1]
-    company_ticker = file_name.split("_")[-1].replace(".xls", "")
-
+    
     # Convert to Pandas DataFrame
     df = pd.read_excel(file_path, index_col=0) 
 
@@ -322,7 +342,7 @@ def process_financial_health_export(file_path):
         df_t["Cap Ex as a % of Sales"] / 100).round(4)
 
     # Remove '-12' from the second level (Year)
-    # TODO May not want to do this because sometimes its not year end! 
+    # Note any columns that are not year end will still include a month
     df_t.index = df_t.index.set_levels(df_t.index.levels[1].str.replace(
             '-12', '', regex=False),level=1)
 
@@ -352,10 +372,14 @@ def process_cash_flow_ratios_export(file_path):
 
     """
     
+    # Get company ticker from xls worksheet name
+    with pd.ExcelFile(file_path) as xls:
+        sheet_names = xls.sheet_names
+        company_ticker = sheet_names[0]
+    
     # File information
     file_name = str(file_path).split("/")[-1]
-    company_ticker = file_name.split("_")[-1].replace(".xls", "")
-
+    
     # Convert to Pandas DataFrame
     df = pd.read_excel(file_path, index_col=0) 
 
@@ -393,7 +417,7 @@ def process_cash_flow_ratios_export(file_path):
         df_t["Free Cash Flow/Sales %"] / 100).round(4)
 
     # Remove '-12' from the second level (Year)
-    # TODO May not want to do this because sometimes its not year end!
+    # Note any columns that are not year end will still include a month
     df_t.index = df_t.index.set_levels(df_t.index.levels[1].str.replace(
             '-12', '', regex=False),level=1)
 

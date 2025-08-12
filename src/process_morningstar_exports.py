@@ -18,10 +18,6 @@ from morningstar_functions import (
 )
 
 def main():
-    # Lists to be populated
-    industry_description = ""
-    gpc_tickers = []
-    file_names = []
 
     # Collect user information
     print("This program is meant to process exports from Morningstar.com")
@@ -39,17 +35,6 @@ def main():
         "Copy and paste the path to the folder containing files to be processed:\n")
     file_paths = get_files_from_folder(folder_path)
 
-    # Temp status check
-    print(f"Export type selected: {export_type}")
-    print(f"Industry description: {industry_description}")
-    print(f"Files in folder:")
-    for file in file_paths:
-        file = str(file)
-        name = file.split("/")[-1]
-        file_names.append(name)
-    for name in file_names:
-        print(name)
-
     # Root, source, and output folders
     current_file = pathlib.Path(__file__).resolve()
     project_root = current_file.parent.parent
@@ -66,9 +51,6 @@ def main():
             df_temp = process_income_statement_from_summary_export(file)
             df_income_statement = pd.concat([df_income_statement, df_temp], axis = 0)
 
-        # TODO temporary printout - needs deleted
-        print(df_income_statement)
-
         # Save DataFrame as csv file in output folder
         output_file_name_is = f"gpc-summary-income-statement-{industry_description}.csv"
         output_file_path_is = output_folder / output_file_name_is
@@ -81,13 +63,10 @@ def main():
             df_temp = process_balance_sheet_from_summary_export(file)
             df_balance_sheet = pd.concat([df_balance_sheet, df_temp], axis = 0)
 
-        # TODO temporary printout - needs deleted
-        print(df_balance_sheet)
-
         # Save DataFrame as csv file in output folder
         output_file_name_bs = f"gpc-summary-balance-sheet-{industry_description}.csv"
         output_file_path_bs = output_folder / output_file_name_bs
-        df_balance_sheet.to_csv(output_file_path_bs)
+        df_balance_sheet.sort_index().to_csv(output_file_path_bs)
 
         # Process Cash Flow Statement using function and save to DataFrame
         df_cash_flow_statement = pd.DataFrame()
@@ -96,13 +75,10 @@ def main():
             df_temp = process_cash_flow_statement_from_summary_export(file)
             df_cash_flow_statement = pd.concat([df_cash_flow_statement, df_temp], axis = 0)
     
-        # TODO temporary printout - needs deleted
-        print(df_cash_flow_statement) # Temp
-
         # Save DataFrame as csv file in output folder
         output_file_name_cf = f"gpc-summary-cash-flow-{industry_description}.csv"
         output_file_path_cf = output_folder / output_file_name_cf
-        df_cash_flow_statement.to_csv(output_file_path_cf)
+        df_cash_flow_statement.sort_index().to_csv(output_file_path_cf)
 
     else:
         pass
@@ -116,13 +92,10 @@ def main():
             df_temp = process_profitability_and_efficiency_export(file)
             df_ratios = pd.concat([df_ratios, df_temp], axis = 0)
 
-        # TODO temporary printout - needs deleted
-        print(df_ratios) # Temp
-
         # Save DataFrame as csv file in output folder
         output_file_name = f"gpc-profitability-and-efficiency-{industry_description}.csv"
         output_file_path = output_folder / output_file_name
-        df_ratios.to_csv(output_file_path)
+        df_ratios.sort_index().to_csv(output_file_path)
 
     else:
         pass
@@ -136,13 +109,10 @@ def main():
             df_temp = process_financial_health_export(file)
             df_ratios = pd.concat([df_ratios, df_temp], axis = 0)
         
-        # TODO temporary printout - needs deleted
-        print(df_ratios) # Temp
-
         # Save DataFrame as csv file in output folder
         output_file_name = f"gpc-financial-health-{industry_description}.csv"
         output_file_path = output_folder / output_file_name
-        df_ratios.to_csv(output_file_path)
+        df_ratios.sort_index().to_csv(output_file_path)
 
     else:
         pass
@@ -156,13 +126,10 @@ def main():
             df_temp = process_cash_flow_ratios_export(file)
             df_ratios = pd.concat([df_ratios, df_temp], axis = 0)
 
-        # TODO temporary printout - needs deleted
-        print(df_ratios) # Temp
-
         # Save DataFrame as csv file in output folder
         output_file_name = f"gpc-cash-flow-ratios-{industry_description}.csv"
         output_file_path = output_folder / output_file_name
-        df_ratios.to_csv(output_file_path)
+        df_ratios.sort_index().to_csv(output_file_path)
 
     else:
         pass

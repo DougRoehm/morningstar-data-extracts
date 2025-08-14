@@ -45,11 +45,18 @@ exports:
 The repository will ask the user for the following inputs:
 1. What type of Key Metric export they want to process.
 2. An industry description to add to the end of the processed file.
-3. To copy and paste the path to the folder containing files to be processed.
+3. The path to the folder containing files to be processed.
 
 Note: each type of export will need to be in a separate folder. The program will then take all the files in the folder, convert them to Pandas DataFrames, make various 
 modifications, combine them into one DataFrame and save the file as a csv file in the 
 output folder.
 
 See the files in the demonstration folder for an example of various telecommunications 
-guideline companies being combined for each fo the above export file types.
+guideline companies being combined for each of the above export file types.
+
+
+## Possible future plans:
+
+The only Key Metric file type that can not be processed is Key Metrics > Growth. This 
+functionality was not built in as a number of these growth rates can be computed from 
+the data already available. However, for completeness I may add this functionality in the future.

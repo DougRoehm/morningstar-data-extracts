@@ -1,5 +1,6 @@
 """
 This is the main program to process Morningstar Key Metrics exports.
+Author: Doug Roehm
 """
 
 import os

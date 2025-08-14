@@ -1,5 +1,6 @@
 """
 Functions for processing Key Metrics exports from Morningstar.com
+Author: Doug Roehm
 """
 
 import numpy as np
